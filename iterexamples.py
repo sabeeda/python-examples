@@ -1,9 +1,12 @@
+#iter
+
 list1=[12,3,4,55,43]
 list2=iter(list1)
 next(list2)
-ages = [5, 12, 17, 18, 24, 32]
 
-#
+#forloop iter
+
+ages = [5, 12, 17, 18, 24, 32]
 for a in ages:
     if a >=18:
         print(a)
@@ -39,9 +42,9 @@ ar3
 ar3.shape
 
 #0D
+import numpy as np
 
-list4=[23]
-ar4=np.array(list4)
+ar4=np.array(23)
 ar4
 ar4.shape
 
@@ -61,7 +64,40 @@ ar2.shape
 
 #3D
 
-list3=[[1,3,4,5,4],[4,5,6,8,9],[1,4,4,4,5,8]]
+list3=[[1,3,4,15,4],[4,5,61,8,9],[1,4,16,9,5]]
 ar3=np.array(list3)
 ar3
 ar3.shape
+sabi=ar3.reshape(5,3)
+sabi
+#first row select cheyan
+sabi[0]
+#colum selection
+sabi[:,0]
+sabi[0,2]
+sabi[0:2,1]
+sabi[2:4,1]
+sabi
+sabi[2:4]
+sabi[2:4,0]
+sabi[2:4,0:3]
+sabi[2:4,0:3:2]
+
+#arange function
+list(range(1,21,3)) #list function
+np.arange(1,21,step=3)#array function
+#zeros
+np.zeros(3)
+np.zeros([3,3,3])
+#ones
+np.ones(4)
+np.ones([4,4,4])
+
+#*,+
+np.ones(2)
+np.ones([3,2,2])*3    #metrix number(group),row,column)
+
+#linspace
+
+np.linspace(1,200,5)
+
