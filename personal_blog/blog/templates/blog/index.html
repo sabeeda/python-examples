@@ -1,0 +1,54 @@
+<!-- blog/templates/blog/index.html -->
+{% extends "base.html" %}
+{% block page_title %}
+    <h2>Blog Posts</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    {% block posts %}
+   
+    {% for post in page %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+            <h3><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h3>
+            <small>
+                {{ post.created_on.date }} | Categories:
+                {% for category in post.categories.all %}
+                    <a href="{% url 'blog_category' category.name %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </small>
+            <p>{{ post.body | slice:":400" }}...</p>
+        </div>
+        {% endfor %}
+        {% if page.has_previous %}
+        <a href="?page={{page.previous_page_number}}" 
+						class="btn btn-secondary mx-2">Previous</a>
+    {% endif %}
+
+    <a href="?page=1" class="btn btn-secondary">First</a>
+
+    {% for num in page.paginator.page_range %}
+        {% if num == page.number %}
+            <span>{{ num }}</span>
+        {% else %}
+            <a href="?page={{num}}" class="btn btn-secondary mx-2">
+								{{ num }}
+						</a>
+        {% endif %}
+    {% endfor %}
+
+    <a href="?page={{page.paginator.num_pages}}" class="btn btn-secondary mx-2">
+			Last
+		</a>
+
+    {% if page.has_next %}
+        <a href="?page={{page.next_page_number}}" class="btn btn-secondary mx-2">
+						Next
+				</a>
+    {% endif %}
+        
+    {% endblock posts %}
+{% endblock page_content %}
